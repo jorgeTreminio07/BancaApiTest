@@ -79,7 +79,7 @@ Esta API de banca fue desarrollada como solución a la prueba técnica propuesta
 
 * **Framework:** .NET 8
 * **Tipo de Proyecto:** ASP.NET Core Web API
-* **Persistencia:** Entity Framework Core (para mejor productividad) con **SQLite** (Base de datos en memoria para el desarrollo/prueba, cumpliendo con el requisito de persistencia).
+* **Persistencia:** Entity Framework Core (para mejor productividad en el desarrollo) con **SQLite** (Base de datos en memoria para el desarrollo/prueba, cumpliendo con el requisito de persistencia).
 * **Pruebas Unitarias:**  xUnit y Moq
 
 ---
