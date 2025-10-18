@@ -73,7 +73,7 @@ o puedes verlos ejecutando con Visual Studio
 
 ## 🌟 Resumen del Proyecto
 
-Esta API de banca fue desarrollada como solución a la prueba técnica propuesta. La aplicación está construida sobre **ASP.NET Core 8 Web API** e implementa las funcionalidades de gestión de clientes, cuentas bancarias y registro de transacciones (depósitos y retiros), utilizando una arquitectura basada en **Servicios** e **Inyección de Dependencias**.
+Esta API de banca fue desarrollada como solución a la prueba técnica propuesta. La aplicación está construida sobre **ASP.NET Core 8 Web API** e implementa las funcionalidades de gestión de clientes, cuentas bancarias y registro de transacciones (depósitos y retiros).
 
 ### Tecnologías Clave
 
@@ -86,7 +86,7 @@ Esta API de banca fue desarrollada como solución a la prueba técnica propuesta
 
 ## ⚙️ Arquitectura y Diseño Implementado
 
-Se ha priorizado un diseño limpio y extensible, enfocándose en los siguientes principios:
+Se ha priorizado un diseño limpio y extensible.
 
 ### 1. Estructura de la Solución
 
@@ -101,6 +101,60 @@ La solución se divide en proyectos lógicos para asegurar la separación de res
 
 Acceda a la documentación interactiva de la API (Swagger) para probar todas las funcionalidades:
 
+
+## **BankAccountController**
+**Ruta base:** `/api/BankAccount`
+
+| Método | Endpoint | Descripción |
+|---------|-----------|--------------|
+| **GET** | `/api/BankAccount/{accountNumber}` | Obtiene los datos de una cuenta bancaria por su número. |
+| **POST** | `/api/BankAccount` | Crea una nueva cuenta bancaria asociada a un cliente. |
+| **GET** | `/api/BankAccount/history?accountNumber={num}` | Obtiene el historial de transacciones de una cuenta específica. |
+
+
+## **ClientController**
+**Ruta base:** `/api/Client`
+
+| Método | Endpoint | Descripción |
+|---------|-----------|--------------|
+| **POST** | `/api/Client` | Crea un nuevo cliente en el sistema. |
+| **GET** | `/api/Client/{id}` | Obtiene la información de un cliente por su ID. |
+
+* **OJO**
+
+El endpoint de creación de cliente (`POST /api/Client`) acepta un campo de tipo **DateTime** para registrar la fecha de nacimiento (`BirthDate`).  
+Este valor debe enviarse en formato **ISO 8601**, que es el estándar en la mayoría de frontends.  
+
+**Ejemplo de request JSON:**
+
+{
+  "name": "Jorge Treminio",
+  "birthDate": "1995-06-21T00:00:00",
+  "typeSex": "Male",
+  "income": 1500.00
+}
+
+⚙️ Nota:
+
+Los valores enumerados (enum) como typeSex deben enviarse exactamente como se definen en el sistema:
+
+"Male"
+"Female"
+
+
+
+## **TransactionController**
+**Ruta base:** `/api/Transaction`
+
+| Método | Endpoint | Descripción |
+|---------|-----------|--------------|
+| **POST** | `/api/Transaction` | Registra una nueva transacción (depósito o retiro) en una cuenta bancaria. |
+| **GET** | `/api/Transaction/{id}` | Obtiene los detalles de una transacción específica por su ID. |
+
+El campo `transactionType` es de tipo enum y **debe enviarse exactamente como se define en el backend**:
+
+- `"Deposit"` → para depósitos  
+- `"Withdrawal"` → para retiros  
 ### 3. Pruebas Unitarias
 
 Se implementaron pruebas unitarias exhaustivas con **xUnit** y el *mocking framework* **Moq** para validar la lógica de negocio, cubriendo los siguientes escenarios:
@@ -223,7 +277,3 @@ Se implementaron pruebas unitarias exhaustivas con **xUnit** y el *mocking frame
 
 
 ---
-
-
-
-
