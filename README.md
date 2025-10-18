@@ -17,7 +17,7 @@ Sigue los pasos a continuación para clonar y ejecutar la API en tu máquina loc
 
 Abre la terminal o consola de tu preferencia y navega hasta la carpeta donde quieras clonar el proyecto.
 
-### 2. Inicializar un Repositorio (Opcional)
+### 2. Inicializar un Repositorio
 
 Si deseas iniciar un repositorio Git en tu carpeta local, ejecuta:
 
